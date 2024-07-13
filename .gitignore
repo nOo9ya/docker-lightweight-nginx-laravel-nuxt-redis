@@ -1,0 +1,71 @@
+##### IDE #####
+/.vscode
+/.vscode-test
+/.idea
+##### OS #####
+/.DS_Store
+/.AppleDouble
+/.LSOverride
+/xcuserData
+Desktop.ini
+Thumbs.db
+
+# git
+.git
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+/vendor/
+node_modules/
+
+storage/*.key
+
+##### Nodejs #####
+/node_modules/
+/npm-debug.log*
+/yarn-error.log*
+/lerna-debug.log*
+/.sass-cache
+/.eslintcache
+/.cache
+/.grunt
+
+# Logs
+logs
+*.log
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+.cache
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# DynamoDB Local files
+.dynamodb/
+
+##### docker volume mout files #####
+/.database/*
+/.logs/*
+
+# dotenv environment variables file
+.env
+.env.local
