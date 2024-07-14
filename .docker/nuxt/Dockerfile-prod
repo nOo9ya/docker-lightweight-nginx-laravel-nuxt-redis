@@ -1,0 +1,21 @@
+# Nuxt.js Dockerfile-prod-dev
+FROM node:20.15-alpine
+
+ARG WORK_DIR
+ENV WORK_DIR=${WORK_DIR}
+
+# Install dependencies
+WORKDIR ${WORK_DIR}
+
+# Copy package.json and package-lock.json
+COPY ./nuxt/package*.json ./
+
+# Install dependencies if package.json exists
+RUN npm install
+
+# Copy application files
+COPY ./nuxt/* .
+
+# Expose port and start the application
+EXPOSE 3000
+CMD ["npm run build && npm run start"]

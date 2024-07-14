@@ -4,7 +4,7 @@ services:
     container_name: nginx_web
     build:
       context: .
-      dockerfile: ./.docker/nginx/web/Dockerfile
+      dockerfile: ./.docker/nginx/web/Dockerfile-prod
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
@@ -28,7 +28,7 @@ services:
     container_name: php8.2
     build:
       context: .
-      dockerfile: ./.docker/php/8.2/Dockerfile
+      dockerfile: ./.docker/php/8.2/Dockerfile-prod
       args:
         - APP_ENV=dev
         - WORK_DIR=/var/www/backend
@@ -42,10 +42,6 @@ services:
     volumes:
       - ./backend:/var/www/backend
       - ./.logs/backend:/var/log/backend
-    environment:
-      PHP_IDE_CONFIG: "serverName=Docker-php"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     depends_on:
       - mariadb
       - redis
@@ -89,11 +85,15 @@ services:
     container_name: nuxt-js
     build:
       context: .
-      dockerfile: .docker/nuxt/Dockerfile
+      dockerfile: .docker/nuxt/Dockerfile-prod
       args:
         - WORK_DIR=/var/www/frontend
     volumes:
       - ./frontend:/var/www/frontend
-    command: npm run dev
+    command: npm run start
     ports:
       - "3000:3000"
+
+volumes:
+  mariadb_data:
+  redis_data:
