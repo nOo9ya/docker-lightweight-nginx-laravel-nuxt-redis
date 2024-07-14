@@ -52,7 +52,7 @@ services:
 
   mariadb:
     container_name: mariadb
-    image: mariadb:10.6-alpine  # LTS 버전
+    image: mariadb:10.6  # LTS 버전
     restart: unless-stopped
     ports:
       - '3306:3306'
@@ -73,7 +73,7 @@ services:
 
   redis:
     container_name: redis
-    image: redis:6-alpine  # LTS 버전
+    image: redis:alpine
     restart: unless-stopped
     privileged: true
     volumes:

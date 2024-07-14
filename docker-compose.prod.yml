@@ -69,7 +69,7 @@ services:
 
   redis:
     container_name: redis
-    image: redis:6-alpine  # LTS 버전
+    image: redis:alpine
     restart: unless-stopped
     privileged: true
     volumes:
@@ -93,7 +93,3 @@ services:
     command: npm run start
     ports:
       - "3000:3000"
-
-volumes:
-  mariadb_data:
-  redis_data:
