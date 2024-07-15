@@ -57,12 +57,8 @@ if [ -f "${WORK_DIR}/artisan" ]; then
 #  ------------- Crontab Update
   echo "*       *       *       *       *       /usr/local/bin/php ${WORK_DIR}/artisan schedule:run >> /var/log/cron.log 2>&1" >> /var/spool/cron/crontabs/root;
   echo "30      4       *       *       6       rm /var/log/cron.log" >> /var/spool/cron/crontabs/root;
-
-  echo "30      4       *       *       *       find
-  ${WORK_DIR}/storage/logs/
-  -name '*.log' -mtime +30 -delete" >> /var/spool/cron/crontabs/root;
-  echo "30      4       *       *       *       find
-  ${WORK_DIR}/storage/debugbar/ -name '*.json' -mtime +30 -delete" >> /var/spool/cron/crontabs/root;
+  echo "30      4       *       *       *       find ${WORK_DIR}/storage/logs/ -name '*.log' -mtime +30 -delete" >> /var/spool/cron/crontabs/root;
+  echo "30      4       *       *       *       find ${WORK_DIR}/storage/debugbar/ -name '*.json' -mtime +30 -delete" >> /var/spool/cron/crontabs/root;
   echo "30      4       *       *       *       find /var/log/laravel/ -name '*.log' -mtime +30 -delete" >> /var/spool/cron/crontabs/root;
   echo "30      4       *       *       *       find /var/log/supervisor/ -name '*.log' -mtime +30 -delete" >> /var/spool/cron/crontabs/root;
   echo "=============================================================================================="
