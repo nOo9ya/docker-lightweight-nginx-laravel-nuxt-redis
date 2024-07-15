@@ -68,3 +68,7 @@ dist
 
 # dotenv environment variables file
 .env.prod
+
+# sources ignore
+/backend
+/frontend
