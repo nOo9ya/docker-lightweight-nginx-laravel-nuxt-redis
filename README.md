@@ -49,7 +49,7 @@ docker 파일과 volume으로 연결할 docker, database, logs로 각각 폴더�
     │   │   │   └── Dockerfile-prod
     │   │   │   └── nginx.conf
     │   │   │   └── nginx-service.sh
-    │   ├── nuxt/
+    │   ├── node/
     │   │   └── Dockerfile
     │   │   └── Dockerfile-prod
     │   │   └── start-service.sh
@@ -92,6 +92,10 @@ docker-compose up --build --force-recreate
 
 # 프로덕션 배포 시에는 아래와 같이 실행하여 프로덕션 설정을 적용하여 실행합니다.
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build --force-recreate
+
+# docker cache 로 문제가 발생될 수 있으므로 아래와 같이 실행하여 캐시로 인한 문제를 회피하며 빌드
+docker builder prune -af
+docker-compose build --no-cache
 ```
 
 ## Frontend nuxt 파일이 없을 시 접근 후 설치

@@ -1,5 +1,4 @@
-# Nuxt.js Dockerfile-prod-dev
-FROM node:20.15-alpine
+FROM node:20-alpine
 
 ARG WORK_DIR
 ENV WORK_DIR=${WORK_DIR}
@@ -8,7 +7,7 @@ ENV WORK_DIR=${WORK_DIR}
 WORKDIR ${WORK_DIR}
 
 # Copy package.json and package-lock.json
-COPY ./nuxt/package*.json ./
+COPY ./node/package*.json ./
 
 # Install dependencies if package.json exists
 RUN npm install
